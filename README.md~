@@ -13,7 +13,7 @@
    setup.py automatically attempts to install these packages if 
    you do not already have them.
 
-## Install and Documentations
+## Install and Documentation
    After installing dependencies, run install.sh to install Tweeter. For bash:
 
    $ sh install.sh
