@@ -1,4 +1,4 @@
-Tweeter - CLI Python Twitter Client
+# Tweeter - CLI Python Twitter Client
 
 
 ## Dependencies
@@ -56,4 +56,4 @@ Tweeter - CLI Python Twitter Client
       2. Click "Create my Access Tokens" under Token Actions
       3. This will generate an "Access Token" and "Access Token Secret"
 
-# tweeter
+
