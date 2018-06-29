@@ -10,4 +10,12 @@
 .AppleDouble
 .LSOverride
 
+# pytest cache
+.cache/v/cache
+.cache/v/cache/
+/.cache/v/cache/
 
+# idea
+.idea/
+.idea
+/.idea

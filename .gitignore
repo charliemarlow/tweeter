@@ -19,3 +19,9 @@
 .idea/
 .idea
 /.idea
+
+
+# API keys
+profiles/
+profiles/*.csv
+profils/*.enc
