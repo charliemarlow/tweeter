@@ -2,20 +2,24 @@
 
 
 ## Dependencies
-   Tweeter uses the following packages
+   Tweeter uses the following packages:
 
-   Tweepy: for handling Twitter API calls
-   Simplecrypt: for encrypting API credentials on the user's system
+   tweepy: for handling Twitter API calls
+
+   simplecrypt: for encrypting API credentials on the user's system
+
+   pytest: for testing classes
 
    setup.py automatically attempts to install these packages if 
    you do not already have them.
 
 ## Install and Documentations
-   After installing dependencies, run install.sh to install Tweeter
-   For bash:
+   After installing dependencies, run install.sh to install Tweeter. For bash:
+
    $ sh install.sh
 
    To create new HTML documentation, run:
+   
    $ sh docs.sh
 
 ## Tweeter App
@@ -31,29 +35,32 @@
    a way to save the credentials to your system.
 
    To launch Tweeter, run:
+   
    $ tweeter
 
    To launch Tweeter for a specific Tweeter username, run:
+   
    $ tweeter [USERNAME]
 
    If Tweeter can't find your user file, it will create one.
 
    Tweeter authenticates your Twitter using one of two methods:
+   
    1). Manually entering your consumer key, consumer secret, access token
        and access token secret generate from apps.twitter.com
+   
    2). Manually entering your consumer key and consumer secret, and then 
        following a link to get a verification pin to verify the account.
 
    To get your consumer key and consumer secret:
-      1. Go to apps.twitter.com and sign in
-      2. Click "Create New App"
-      3. Fill in the required fields and click "Create your Twitter Application"
-      	 - you can use this github address for the website!
-      4. Go to "Keys and Access Tokens"
-      5. At the top are the "Consumer Key (API Key)" and "Consumer Secret (API Secret)
-   To get the access token and access token secret:
-      1. From the "Keys and Access Tokens" site, scroll down to Your Access Tokens
-      2. Click "Create my Access Tokens" under Token Actions
-      3. This will generate an "Access Token" and "Access Token Secret"
+   1. Go to apps.twitter.com and sign in
+   2. Click "Create New App"
+   3. Fill in the required fields and click "Create your Twitter Application"
+   To get your consumer key and consumer secret:
+   4. From the "Keys and Access Tokens" site, scroll down to Your Access Tokens
+   5. Click "Create my Access Tokens" under Token Actions
+   6. This will generate an "Access Token" and "Access Token Secret"
+
+
 
 
