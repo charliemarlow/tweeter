@@ -7,13 +7,8 @@ profiles/
 .idea/
 
 # emacs backup files
-*.py~
-*.csv~
-*.enc~
-*.txt~
-*.md~
-*.html~
-*.gitignore~
+\#*\#
+.\#*
 
 #py cache
 tweeter/__pycache__/
