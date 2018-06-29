@@ -1,4 +1,4 @@
-README.txt
+README.md
 tweeter/__init__.py
 tweeter/__main__.py
 tweeter/authorizer.py

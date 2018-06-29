@@ -13,7 +13,10 @@ class Authorizer:
         :param user_arg: optional argument for a username
         '''
         # set username to user_arg
-        self.username = user_arg.strip()
+        if(isinstance(user_arg, str)):
+            self.username = user_arg.strip()
+        else:
+            self.username = user_arg
 
         # create absolute path to profile
         abs_path = os.path.abspath(os.path.dirname(__file__))
@@ -108,7 +111,7 @@ class Authorizer:
         yes_no = input()
         while(yes_no != 'y' and yes_no != 'n'):
             print("Please enter either y or n: ", end = '')
-            yes_not = input()
+            yes_no = input()
 
         if(yes_no == "y"):
             return True
