@@ -56,6 +56,7 @@
    1. Go to apps.twitter.com and sign in
    2. Click "Create New App"
    3. Fill in the required fields and click "Create your Twitter Application"
+
    To get your consumer key and consumer secret:
    4. From the "Keys and Access Tokens" site, scroll down to Your Access Tokens
    5. Click "Create my Access Tokens" under Token Actions
