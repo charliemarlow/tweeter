@@ -1,0 +1,3 @@
+[console_scripts]
+tweeter = tweeter.__main__:main
+

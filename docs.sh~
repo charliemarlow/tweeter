@@ -1,0 +1,3 @@
+pydoc -w tweeter
+pydoc -w tweeter.authorizer
+mv 
