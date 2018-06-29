@@ -1,1 +1,25 @@
-profiles/*
+# API keys
+profiles/
+*.csv
+*.enc
+
+# files for PyCharm
+.idea/
+
+# emacs backup files
+*.py~
+*.csv~
+*.enc~
+*.txt~
+*.md~
+*.html~
+*.gitignore~
+
+#py cache
+tweeter/__pycache__
+
+# Desktop Services Store file
+.DS_Store
+
+#pytest cache
+.cache/v/cache

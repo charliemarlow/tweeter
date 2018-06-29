@@ -13,12 +13,13 @@ profiles/
 *.txt~
 *.md~
 *.html~
+*.gitignore~
 
 #py cache
-tweeter/__pycache__
+tweeter/__pycache__/
 
 # Desktop Services Store file
 .DS_Store
 
 #pytest cache
-.cache/v/cache
+.cache/v/cache/
