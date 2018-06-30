@@ -12,21 +12,21 @@ class Authorizer:
         Sets up instance variable username
         :param user_arg: optional argument for a username
         '''
-        # get username
-        if (user_arg == -1):
-            print("Please enter a user name for Tweeter: ", end='')
-            self.username = input().strip()
-        else:
-            print("Welcome {}".format(user_arg))
+        # set username to user_arg
+        if(isinstance(user_arg, str)):
             self.username = user_arg.strip()
+        else:
+            self.username = user_arg
 
+        # create absolute path to profile
         abs_path = os.path.abspath(os.path.dirname(__file__))
-        print(abs_path)
         path_list = abs_path.split('/')
-        print(path_list)
         path_list[-1] = "profiles"
-        profile_path = '/'.join(path_list)
-        print(profile_path)
+        self.path = '/'.join(path_list)
+
+        # set up profiles directory
+        if(not os.path.exists(self.path)):
+            os.makedirs(self.path)
 
     def authorize(self):
         '''
@@ -36,6 +36,13 @@ class Authorizer:
         Also handles checking with verification method (tokens or link) the user will use
         :return: an OAuthHandler object that can be used to create an API object
         '''
+
+        # get username
+        if (self.username == -1):
+            print("Please enter a user name for Tweetsole: ", end='')
+            self.username = input().strip()
+        else:
+            print("Welcome {}".format(self.username))
 
         # check if user has password
         if((self.user_exists() and self.has_password()) or not self.user_exists() ):
@@ -61,12 +68,15 @@ class Authorizer:
             api.home_timeline()
         except:
             #remove user history, try again
-            os.remove("../profiles/{}.enc".format(self.username))
-            print("Invalid tokens, try again")
+            if(self.has_password()):
+                os.remove(self.path + "/{}.enc".format(self.username))
+            else:
+                os.remove(self.path + "/{}.csv".format(self.username))
+
+            print("Invalid tokens, deleting user profile. Please try again.")
             self.authorize()
 
         return auth
-
 
     def get_password(self):
         '''
@@ -101,7 +111,7 @@ class Authorizer:
         yes_no = input()
         while(yes_no != 'y' and yes_no != 'n'):
             print("Please enter either y or n: ", end = '')
-            yes_not = input()
+            yes_no = input()
 
         if(yes_no == "y"):
             return True
@@ -129,7 +139,7 @@ class Authorizer:
         else:
             verify = False
 
-        print("Please authorize Tweeter with Twitter at apps.twitter.com")
+        print("Please authorize Tweetsole with Twitter at apps.twitter.com")
         print("Create a new application and jot down the consumer token and consumer secret")
         
         print("Please enter the consumer token: ", end = '')
@@ -153,7 +163,6 @@ class Authorizer:
         else:
             return self.store_tokens(token_list)
 
-
     def split_keys(self, keys_list ):
         '''
         Takes a list of keys and splits them into variables
@@ -173,7 +182,7 @@ class Authorizer:
         :param keys_list: a list of API tokens
         :return: the four API tokens needed to authenticate the user
         '''
-        file = open("../profiles/{}.csv".format(self.username), 'w')
+        file = open(self.path + "/{}.csv".format(self.username), 'w')
         with file:
             writer = csv.writer(file)
             writer.writerow(keys_list)
@@ -192,7 +201,7 @@ class Authorizer:
         token_string = ','.join(keys_list)
         print("Encrypting tokens...")
         ciphertext = encrypt(password, token_string.encode())
-        encrypted_file = open("../profiles/{}.enc".format(self.username), 'wb')
+        encrypted_file = open(self.path + "/{}.enc".format(self.username), 'wb')
         encrypted_file.write(ciphertext)
 
         return self.split_keys(keys_list)
@@ -224,7 +233,6 @@ class Authorizer:
         access_secret = auth.access_token_secret
         
         return access_token, access_secret
-
 
     def get_access_tokens(self):
         '''
@@ -260,9 +268,9 @@ class Authorizer:
                 # if there is an issue with the file
                 print("User file corrupted, removing {}".format(self.username))
                 if(self.has_password()):
-                    os.remove("../profiles/{}.enc".format(self.username))
+                    os.remove(self.path + "/{}.enc".format(self.username))
                 else:
-                    os.remove("../profiles/{}.csv".format(self.username))
+                    os.remove(self.path + "/{}.csv".format(self.username))
 
                 exit(2)
         else:
@@ -275,7 +283,7 @@ class Authorizer:
         :return: the four API tokens needed to authenticate the user
         '''
         # open csv file for reading
-        file = open("../profiles/{}.csv".format(self.username), 'r')
+        file = open(self.path + "/{}.csv".format(self.username), 'r')
         with file:
             reader = csv.reader(file, delimiter=',', quotechar=',',quoting=csv.QUOTE_MINIMAL)
             for row in reader:
@@ -295,7 +303,7 @@ class Authorizer:
 
         #if(password != -1):
         #decrypt string in username.enc
-        encrypted_file = open("../profiles/{}.enc".format(self.username), 'rb').read()
+        encrypted_file = open(self.path + "/{}.enc".format(self.username), 'rb').read()
         print("Decrypting tokens...")
         keys_string = decrypt(password, encrypted_file).decode()
 
@@ -312,8 +320,8 @@ class Authorizer:
         '''
 
         # try to read file in dict structure
-        if( os.path.isfile("../profiles/{}.enc".format(self.username))
-            or os.path.isfile("../profiles/{}.csv".format(self.username)) ):
+        if( os.path.isfile(self.path + "/{}.enc".format(self.username))
+            or os.path.isfile(self.path + "/{}.csv".format(self.username)) ):
             return True
         else:
             return False
@@ -325,7 +333,7 @@ class Authorizer:
         :return: True if the user has encrypted their credentials with a password,
                 False if they are not using a password
         '''
-        if(os.path.isfile("../profiles/{}.enc".format(self.username))):
+        if(os.path.isfile(self.path + "/{}.enc".format(self.username))):
             return True
-        elif(os.path.isfile("../profiles/{}.csv".format(self.username))):
+        elif(os.path.isfile(self.path + "/{}.csv".format(self.username))):
             return False

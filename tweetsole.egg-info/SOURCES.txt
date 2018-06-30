@@ -1,0 +1,11 @@
+README.md
+tweetsole/__init__.py
+tweetsole/__main__.py
+tweetsole/authorizer.py
+tweetsole/console.py
+tweetsole.egg-info/PKG-INFO
+tweetsole.egg-info/SOURCES.txt
+tweetsole.egg-info/dependency_links.txt
+tweetsole.egg-info/entry_points.txt
+tweetsole.egg-info/requires.txt
+tweetsole.egg-info/top_level.txt

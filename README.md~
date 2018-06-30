@@ -58,6 +58,7 @@
    3. Fill in the required fields and click "Create your Twitter Application"
 
    To get your consumer key and consumer secret:
+   
    4. From the "Keys and Access Tokens" site, scroll down to Your Access Tokens
    5. Click "Create my Access Tokens" under Token Actions
    6. This will generate an "Access Token" and "Access Token Secret"

@@ -1,5 +1,5 @@
-pydoc -w tweeter
-pydoc -w tweeter.authorizer
+pydoc -w tweetsole
+pydoc -w tweetsole.authorizer
 
-mv tweeter.html docs/tweeter.html
-mv tweeter.authorizer.html docs/tweeter.authorizer.html 
+mv tweetsole.html docs/tweetsole.html
+mv tweetsole.authorizer.html docs/tweetsole.authorizer.html 

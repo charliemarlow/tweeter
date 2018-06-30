@@ -1,0 +1,3 @@
+[console_scripts]
+tweetsole = tweetsole.__main__:main
+

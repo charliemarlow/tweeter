@@ -1,13 +1,13 @@
 from setuptools import setup
 
 setup(
-    name = 'tweetsole',
+    name = 'tweeter',
     version = '0.0.0',
-    packages = ['tweetsole'],
+    packages = ['tweeter'],
     license = 'MIT',
     entry_points = {
         'console_scripts': [
-            'tweetsole = tweetsole.__main__:main'
+            'tweeter = tweeter.__main__:main'
         ]
     },
     install_requires = [

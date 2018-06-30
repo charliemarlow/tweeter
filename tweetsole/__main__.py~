@@ -1,6 +1,6 @@
 import sys
 import tweepy
-from .tweeter import Tweeter
+from .console import Console
 from .authorizer import Authorizer
 
 def main():

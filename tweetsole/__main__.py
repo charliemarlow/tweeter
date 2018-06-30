@@ -1,14 +1,17 @@
 import sys
-from .tweeter import Tweeter
+import tweepy
 from .authorizer import Authorizer
 
 def main():
-    test = Tweeter()
-    test.hello()
-    
-    authorizer = Authorizer()
+
+    if(len(sys.argv) == 2):
+        username = sys.argv[1]
+        authorizer = Authorizer(user_arg=username)
+    else:
+        authorizer = Authorizer()
+
     auth = authorizer.authorize()
-    
+
     api = tweepy.API(auth)
     public_tweets = api.home_timeline()
     for tweet in public_tweets:
