@@ -1,5 +1,7 @@
 import tweepy
 from collections import defaultdict
+import string
+import csv
 
 class Console:              
 
@@ -10,23 +12,45 @@ class Console:
 
 
     def console(self):
-        public_tweets = self.api.home_timeline()
+        '''
+        try:
+            public_tweets = self.api.home_timeline()
+            for tweet in public_tweets:
+                print(tweet.text)
+        except tweepy.TweepError:
+            print("tweep error")
+
+        '''
+        public_tweets = [] 
+        file = open("tweets.csv", 'r')
+        with file:
+            reader = csv.reader(file)
+            for row in reader:
+                public_tweets.append(row)
+
         for tweet in public_tweets:
-            print(tweet.text)
+            print(tweet)
 
         input = ''
-        while(input != "exit"):
+        exit = False
+
+        while(not exit):
             input = self.get_console_input()
-
+            
+            exit = self.is_exit(input)
+            #debug("input", input)
             args = input.split()
+            #debug("args list", args)
+           
             cmd = args[0]
-
-            if(len(args) > 1):
+            # debug("cmd", cmd)
+            
+            if(len(args) > 1 and type(args[1]) is int):
                 self.id = args[1]
             else:
                 self.id = 0
 
-            self.id = public_tweets[self.id].id
+            self.id = public_tweets[int(self.id)].id
 
             self.direct_input(cmd)
 
@@ -34,6 +58,11 @@ class Console:
             cmd = ''
             args.clear()
 
+    def is_exit(self, input):
+        if(input.lower() == "exit"):
+            return True
+        else:
+            return False
     def get_console_input(self):
         print("> ", end ='')
         user_input = input()
@@ -50,3 +79,7 @@ class Console:
     def favorite(self):
         print("fav")
         
+
+def debug(name, var):
+    print(name, end='')
+    print(var)
