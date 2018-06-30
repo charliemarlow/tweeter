@@ -1,6 +1,7 @@
 import sys
 import tweepy
 from .authorizer import Authorizer
+from .console import Console
 
 def main():
 
@@ -13,9 +14,9 @@ def main():
     auth = authorizer.authorize()
 
     api = tweepy.API(auth)
-    public_tweets = api.home_timeline()
-    for tweet in public_tweets:
-        print(tweet.text)
+    console = Console(api)
+    console.console()
+
     
 if __name__ == '__main__':
     main()

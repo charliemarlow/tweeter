@@ -39,8 +39,11 @@ class Authorizer:
 
         # get username
         if (self.username == -1):
-            print("Please enter a user name for Tweetsole: ", end='')
-            self.username = input().strip()
+            str_name = str(self.username)
+            while( not str_name.isalnum()):
+                print("Please enter a user name for Tweetsole: ", end='')
+                str_name = input().strip()
+            self.username = str_name
         else:
             print("Welcome {}".format(self.username))
 
