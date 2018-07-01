@@ -13,6 +13,7 @@ setup(
     install_requires = [
             'simple-crypt',
             'tweepy',
-            'pytest'
+            'pytest',
+            'arrow'
             ]
     )

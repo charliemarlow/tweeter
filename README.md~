@@ -1,8 +1,8 @@
-# Tweeter - CLI Python Twitter Client
+# Tweetsole - CLI Python Twitter Console
 
 
 ## Dependencies
-   Tweeter uses the following packages:
+   Tweetsole uses the following packages:
 
    tweepy: for handling Twitter API calls
 
@@ -14,7 +14,7 @@
    you do not already have them.
 
 ## Install and Documentation
-   After installing dependencies, run install.sh to install Tweeter. For bash:
+   After installing dependencies, run install.sh to install Tweetsole. For bash:
 
    $ sh install.sh
 
@@ -22,29 +22,29 @@
    
    $ sh docs.sh
 
-## Tweeter App
+## Tweetsole App
 
-   Tweeter lets you save your credentials for multiple Twitter accounts by 
+   Tweetsole lets you save your credentials for multiple Twitter accounts by 
    creating a Tweeter user. You can choose to use a password (which will
    encrypt your API credentials) or not. If you do not use a password, your
    credentials will be saved in plaintext in a .csv file. Tweeter allows
    you to save multiple credential files under any usernames you like.
    These files are saved in /profiles
    
-   The Tweeter username does not have to be your Twitter username, it's just
+   The Tweetsole username does not have to be your Twitter username, it's just
    a way to save the credentials to your system.
 
    To launch Tweeter, run:
    
-   $ tweeter
+   $ tweetsole
 
-   To launch Tweeter for a specific Tweeter username, run:
+   To launch Tweetsole for a specific user account, run:
    
-   $ tweeter [USERNAME]
+   $ tweetsole [USERNAME]
 
    If Tweeter can't find your user file, it will create one.
 
-   Tweeter authenticates your Twitter using one of two methods:
+   Tweetsole authenticates your Twitter using one of two methods:
    
    1). Manually entering your consumer key, consumer secret, access token
        and access token secret generate from apps.twitter.com

@@ -1,0 +1,20 @@
+Authorize
+- option to not use password 
+
+
+Tweeter.py
+- view and select tweets
+- favorite
+- retweet
+- paginate tweets
+- quote retweet
+- bookmark
+- local bookmarks
+- schedule
+- see trends
+
+
+downloader.py
+- download on user startup
+- statsheet 
+

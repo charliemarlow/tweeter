@@ -3,15 +3,17 @@ Authorize
 
 
 Tweeter.py
-- view and select tweets
-- favorite
-- retweet
-- paginate tweets
-- quote retweet
-- bookmark
-- local bookmarks
-- schedule
-- see trends
+- compose 3. 
+- reply 4. 
+- test favorite 1.
+- test retweet 2.
+- paginate tweets 6. 
+- bookmark 5.
+- local bookmarks 9. 
+- schedule 10. 
+- see trends 8.
+- search 7.
+- document everything 11.
 
 
 downloader.py

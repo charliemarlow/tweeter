@@ -1,9 +1,0 @@
-
-
-class Tweeter:
-
-    def __init__(self):
-        user = "blank"
-
-    def hello():
-        print("Hello World!")
