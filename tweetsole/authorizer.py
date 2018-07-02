@@ -6,6 +6,15 @@ from simplecrypt import encrypt, decrypt
 
 
 class Authorizer:
+    '''
+    Authorizes new users, gets credentials for existing users
+    Can authorize via all four tokens (consumer and access) or
+    just using the consumer and a verification pin from a link.
+
+    Users can protect their API credentials with a password if they want
+
+    Creates the OAuth object used to make API calls
+    '''
 
     def __init__(self, user_arg=-1):
         '''

@@ -3,6 +3,8 @@ tweetsole/__init__.py
 tweetsole/__main__.py
 tweetsole/authorizer.py
 tweetsole/console.py
+tweetsole/pickle_it.py
+tweetsole/tweet_csv.py
 tweetsole.egg-info/PKG-INFO
 tweetsole.egg-info/SOURCES.txt
 tweetsole.egg-info/dependency_links.txt
