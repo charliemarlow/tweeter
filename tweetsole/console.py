@@ -147,29 +147,29 @@ class Console:
         :param tweets: the list of tweets to be printed
         :return: None
         '''
-        authors = []
-        retweets = []
-        favorite_count = []
-        favorited = []
-        retweeted = []
-        created_at = []
 
-        for i, tweet in enumerate(tweets):            
-            authors.append(tweet.user._json['screen_name'])
-            retweets.append(tweet.retweet_count)
-            favorite_count.append(tweet.user._json['favourites_count'])
-            created_at.append(tweet.created_at)
-            favorited.append(tweet.favorited)
-            retweeted.append(tweet.retweeted)
+        tweet_dicts = []
+        for tweet in tweets:
+            tweet_dicts.append({
+                'author':tweet.user._json['screen_name'],
+                'retweets':tweet.retweet_count,
+                'favorites':tweet.user._json['favourites_count'],
+                'created_at':tweet.created_at,
+                'favorited':tweet.favorited,
+                'retweeted':tweet.retweeted,
+                'tweet':tweet.full_text
+            })
 
-        for i, tweet in enumerate(tweets):
-            print(i, end='')
-            print(". By @" + authors[i])
-            print(tweet.full_text)
-            print("RTs: " + str(retweets[i]) + ", Favorites: " + str(favorite_count[i]))
-            print(self.handle_date(tweet.created_at))
-            print(self.handle_graphics(favorited[i], retweeted[i]))
+
+        for tweet in tweet_dicts:
+            print(tweet_dicts.index(tweet), end='')
+            print(". By @" + tweet['author'])
+            print(tweet['tweet'])
+            print("RTs: " + str(tweet['retweets']) + ", Favorites: " + str(tweet['favorites']))
+            print(self.handle_date(tweet['created_at']))
+            print(self.handle_graphics(tweet['favorited'], tweet['retweeted']))
             print("\n")
+
 
     def handle_graphics(self, favorited, retweeted):
         '''

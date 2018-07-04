@@ -7,10 +7,14 @@ Tweeter.py
 - reply 4. 
 - test favorite 1.
 - test retweet 2.
-- paginate tweets 6. 
+- paginate tweets/specific number 6.
+    - only output specific number of tweets
+    - page through new tweets
+    - separate into method so it can be used for search/trends too
 - bookmark 5.
-- local bookmarks 9. 
-- schedule 10. 
+- local bookmarks 9.
+    - directory style tweet storage on local machine
+- schedule 10.
 - see trends 8.
 - search 7.
 - document everything 11.
@@ -18,5 +22,8 @@ Tweeter.py
 
 downloader.py
 - download on user startup
+- download favorites
+- download tweets
+- download retewets
 - statsheet 
 
