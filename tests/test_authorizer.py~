@@ -1,4 +1,4 @@
-from tweetsole.authorizer import Authorizer
+from tweeter.authorizer import Authorizer
 import pytest
 import os
 

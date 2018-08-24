@@ -1,6 +1,6 @@
-pydoc -w tweetsole
-pydoc -w tweetsole.authorizer
-pydoc -w tweetsole.console
+pydoc3 -w tweetsole
+pydoc3 -w tweetsole.authorizer
+pydoc3 -w tweetsole.console
 
 mv tweetsole.html docs/tweetsole.html
 mv tweetsole.authorizer.html docs/tweetsole.authorizer.html 

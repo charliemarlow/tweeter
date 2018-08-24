@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="tweetsole.html"><font color="#ffffff">tweetsole</font></a>.console</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/charliemarlow/Desktop/tweetsole/tweetsole/console.py">/Users/charliemarlow/Desktop/tweetsole/tweetsole/console.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/charlie/Desktop/tweetsole/tweetsole/console.py">/Users/charlie/Desktop/tweetsole/tweetsole/console.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -45,12 +45,19 @@
 <td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="Console">class <strong>Console</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
     
-<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Console">Console</a>(api)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Console-__init__"><strong>__init__</strong></a>(self, api)</dt><dd><tt>Sets&nbsp;up&nbsp;instance&nbsp;variables&nbsp;for&nbsp;class&nbsp;console<br>
 self.<strong>options</strong>&nbsp;is&nbsp;used&nbsp;to&nbsp;handle&nbsp;control&nbsp;flow&nbsp;for&nbsp;the&nbsp;main&nbsp;loop<br>
 using&nbsp;defaultdict's&nbsp;get&nbsp;option<br>
 :param&nbsp;api:&nbsp;the&nbsp;API&nbsp;<a href="builtins.html#object">object</a>&nbsp;used&nbsp;to&nbsp;make&nbsp;calls&nbsp;through&nbsp;Tweepy</tt></dd></dl>
+
+<dl><dt><a name="Console-compose"><strong>compose</strong></a>(self)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;tweet<br>
+:return:&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Console-console"><strong>console</strong></a>(self)</dt><dd><tt>contains&nbsp;the&nbsp;main&nbsp;loop&nbsp;of&nbsp;the&nbsp;class<br>
 Takes&nbsp;user&nbsp;input,&nbsp;passes&nbsp;it&nbsp;to&nbsp;other&nbsp;functions&nbsp;to&nbsp;handle&nbsp;it<br>
@@ -77,12 +84,25 @@ defaultdicts&nbsp;get()&nbsp;function<br>
 :param&nbsp;retweeted:&nbsp;bool&nbsp;of&nbsp;whether&nbsp;the&nbsp;user&nbsp;retweeted&nbsp;the&nbsp;tweet&nbsp;or&nbsp;not<br>
 :return:&nbsp;a&nbsp;string&nbsp;to&nbsp;be&nbsp;printed&nbsp;under&nbsp;the&nbsp;tweet</tt></dd></dl>
 
+<dl><dt><a name="Console-help"><strong>help</strong></a>(self)</dt><dd><tt>Prints&nbsp;a&nbsp;menu&nbsp;of&nbsp;options<br>
+:return:&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="Console-is_exit"><strong>is_exit</strong></a>(self, input)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;input&nbsp;is&nbsp;the&nbsp;word&nbsp;exit<br>
 :param&nbsp;input:&nbsp;the&nbsp;user's&nbsp;input<br>
 :return:&nbsp;True&nbsp;if&nbsp;the&nbsp;input&nbsp;is&nbsp;exit,&nbsp;false&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;exit</tt></dd></dl>
 
+<dl><dt><a name="Console-post_tweet"><strong>post_tweet</strong></a>(self, is_reply)</dt><dd><tt>Posts&nbsp;a&nbsp;tweet<br>
+:param&nbsp;is_reply:&nbsp;if&nbsp;the&nbsp;tweet&nbsp;is&nbsp;a&nbsp;reply&nbsp;or&nbsp;not<br>
+:return:&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="Console-print_tweets"><strong>print_tweets</strong></a>(self, tweets)</dt><dd><tt>Prints&nbsp;out&nbsp;tweets&nbsp;with&nbsp;username,&nbsp;text,&nbsp;and&nbsp;tweet&nbsp;information<br>
 :param&nbsp;tweets:&nbsp;the&nbsp;list&nbsp;of&nbsp;tweets&nbsp;to&nbsp;be&nbsp;printed<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Console-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>Refreshes&nbsp;tweetsole&nbsp;with&nbsp;new&nbsp;tweets<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Console-reply"><strong>reply</strong></a>(self)</dt><dd><tt>Replies&nbsp;to&nbsp;a&nbsp;given&nbsp;tweet<br>
 :return:&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Console-retweet"><strong>retweet</strong></a>(self)</dt><dd><tt>Retweets&nbsp;a&nbsp;tweet<br>

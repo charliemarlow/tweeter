@@ -65,6 +65,4 @@
    5. Click "Create my Access Tokens" under Token Actions
    6. This will generate an "Access Token" and "Access Token Secret"
 
-
-
-
+   Once you're logged in, access the in app documentation with the help command.

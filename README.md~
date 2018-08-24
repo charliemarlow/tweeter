@@ -10,6 +10,8 @@
 
    pytest: for testing classes
 
+   pytz and tzlocal for getting local time
+
    setup.py automatically attempts to install these packages if 
    you do not already have them.
 

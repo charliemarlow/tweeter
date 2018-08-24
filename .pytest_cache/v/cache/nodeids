@@ -1,0 +1,5 @@
+[
+  "tests/test_authorizer.py::test_has_password",
+  "tests/test_authorizer.py::test_user_exists",
+  "tests/test_authorizer.py::test_split_keys"
+]

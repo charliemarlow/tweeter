@@ -18,12 +18,17 @@ class Console:
         '''
         self.api = api
         self.tweet_id = 0
+        self.public_tweets = []
+        self.temp_user = "@example"
         self.options = defaultdict(lambda: None,
                                    {'rt':self.retweet,
                                     '>>':self.retweet,
                                     'fav':self.favorite,
                                     '<3':self.favorite,
-                                    'exit':lambda: print("Exiting...")
+                                    'exit':lambda: print("Exiting..."),
+                                    'compose':self.compose,
+                                    'refresh':self.refresh,
+                                    'help':self.help
                                     })
 
 
@@ -38,16 +43,14 @@ class Console:
         # use pickle to get locally stored tweets
         if(self.api != 0):
             try:
-                public_tweets = self.api.home_timeline(tweet_mode='extended')
-                for tweet in public_tweets:
-                    print(tweet.full_text)
+                self.public_tweets = self.api.home_timeline(tweet_mode='extended')
             except tweepy.TweepError:
                 print("tweep error")
         else:
-            public_tweets = pickler() 
+            self.public_tweets = pickler() 
 
         # print out tweets
-        self.print_tweets(public_tweets)
+        self.print_tweets(self.public_tweets)
 
         input = ''
         exit = False
@@ -78,12 +81,11 @@ class Console:
 
             # self.tweet_id corresponded to the number listed next to the tweet
             # now corresponds to twitter API id
-            if(len(public_tweets) > self.tweet_id):
-                self.tweet_id = public_tweets[self.tweet_id].id
-
-            print("Directing...", end= '')
-            print(cmd)
-            # send it to control flow method
+            if(len(self.public_tweets) > self.tweet_id):
+                self.temp_user = self.public_tweets[self.tweet_id].user._json['screen_name']
+                self.tweet_id = self.public_tweets[self.tweet_id].id
+                print(self.temp_user)
+            # pass input to control flow
             self.direct_input(cmd)
 
             # clear reused variables
@@ -132,16 +134,80 @@ class Console:
         Retweets a tweet
         :return: None
         '''
-        print("rt")
-        # self.api.retweet(self.tweet_id)
+        try:
+            self.api.retweet(self.tweet_id)
+            print("Retweeted")
+        except:
+            print("Error retweeting, try again later")
 
     def favorite(self):
         '''
         Favorites a tweet
         :return: None
         '''
-        print("fav")
-        #self.api.create_favorite(self.tweet_id)
+        try:
+            self.api.create_favorite(self.tweet_id)
+            print("Favorited")
+        except:
+            print("Error favoriting, try again later")
+
+    def refresh(self):
+        '''
+        Refreshes tweetsole with new tweets
+        :return: None
+        '''
+        try:
+            self.public_tweets = self.api.home_timeline(tweet_mode='extended')
+            self.print_tweets(self.public_tweets)
+        except:
+            print("Error refreshing, try again later")
+
+    def compose(self):
+        '''
+        Create a new tweet
+        :return: None
+        '''
+        self.post_tweet(False)
+
+    def post_tweet(self, is_reply):
+        '''
+        Posts a tweet
+        :param is_reply: if the tweet is a reply or not
+        :return: None
+        '''
+        print("Enter a tweet to post: ", end = '')
+        tweet_content = ''
+
+        while(tweet_content == ''):
+            tweet_content = input()
+        
+        try:
+            if(is_reply):
+                user = self.temp_user
+                user = "@" + user
+                print(self.tweet_id)
+                self.api.update_status(user + " " + tweet_content, in_reply_to_status_id=self.tweet_id)
+            else:
+                self.api.update_status(tweet_content)
+            
+            print("Posted")
+        except:
+            print("Error posting tweet, try again later")
+
+    def reply(self):
+        self.post_tweet(True)
+
+    def help(self):
+        '''
+        Prints a menu of options
+        :return: None
+        '''
+        print("From the tweetsole console, enter any of the following commands: ")
+        print("rt <tweet ID>  OR >> <tweet ID>       retweets a tweet")
+        print("fav <tweet ID> OR <3 <tweet ID>       favorites a tweet")
+        print("compose                               posts a new tweet")
+        print("refresh                               loads 20 new tweets")
+        print("help                                  show commands")
 
     def print_tweets(self, tweets):
         '''
@@ -149,29 +215,29 @@ class Console:
         :param tweets: the list of tweets to be printed
         :return: None
         '''
-        authors = []
-        retweets = []
-        favorite_count = []
-        favorited = []
-        retweeted = []
-        created_at = []
 
-        for i, tweet in enumerate(tweets):            
-            authors.append(tweet.user._json['screen_name'])
-            retweets.append(tweet.retweet_count)
-            favorite_count.append(tweet.user._json['favourites_count'])
-            created_at.append(tweet.created_at)
-            favorited.append(tweet.favorited)
-            retweeted.append(tweet.retweeted)
+        tweet_dicts = []
+        for tweet in tweets:
+            tweet_dicts.append({
+                'author':tweet.user._json['screen_name'],
+                'retweets':tweet.retweet_count,
+                'favorites':tweet.user._json['favourites_count'],
+                'created_at':tweet.created_at,
+                'favorited':tweet.favorited,
+                'retweeted':tweet.retweeted,
+                'tweet':tweet.full_text
+            })
 
-        for i, tweet in enumerate(tweets):
-            print(i, end='')
-            print(". By @" + authors[i])
-            print(tweet.full_text)
-            print("RTs: " + str(retweets[i]) + ", Favorites: " + str(favorite_count[i]))
-            print(self.handle_date(tweet.created_at))
-            print(self.handle_graphics(favorited[i], retweeted[i]))
+
+        for tweet in tweet_dicts:
+            print(tweet_dicts.index(tweet), end='')
+            print(". By @" + tweet['author'])
+            print(tweet['tweet'])
+            print("RTs: " + str(tweet['retweets']) + ", Favorites: " + str(tweet['favorites']))
+            print(self.handle_date(tweet['created_at']))
+            print(self.handle_graphics(tweet['favorited'], tweet['retweeted']))
             print("\n")
+
 
     def handle_graphics(self, favorited, retweeted):
         '''
@@ -241,9 +307,9 @@ def pickler():
     :return: a list of tweets
     '''
     with open('tweet_data.pkl', 'rb') as input:
-        public_tweets = pickle.load(input)
+        self.public_tweets = pickle.load(input)
 
-    return public_tweets
+    return self.public_tweets
 
 def main():
     '''
