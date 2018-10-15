@@ -28,7 +28,9 @@ class Console:
                                     'exit':lambda: print("Exiting..."),
                                     'compose':self.compose,
                                     'refresh':self.refresh,
-                                    'help':self.help
+                                    'help':self.help,
+                                    'reply':self.reply,
+                                    'reply':self.reply
                                     })
 
 
@@ -48,6 +50,7 @@ class Console:
                 print("tweep error")
         else:
             self.public_tweets = pickler() 
+
 
         # print out tweets
         self.print_tweets(self.public_tweets)
@@ -84,7 +87,7 @@ class Console:
             if(len(self.public_tweets) > self.tweet_id):
                 self.temp_user = self.public_tweets[self.tweet_id].user._json['screen_name']
                 self.tweet_id = self.public_tweets[self.tweet_id].id
-                print(self.temp_user)
+
             # pass input to control flow
             self.direct_input(cmd)
 
@@ -185,7 +188,7 @@ class Console:
             if(is_reply):
                 user = self.temp_user
                 user = "@" + user
-                print(self.tweet_id)
+
                 self.api.update_status(user + " " + tweet_content, in_reply_to_status_id=self.tweet_id)
             else:
                 self.api.update_status(tweet_content)
@@ -195,7 +198,12 @@ class Console:
             print("Error posting tweet, try again later")
 
     def reply(self):
+        '''
+        Replies to a given tweet
+        :return: None
+        '''
         self.post_tweet(True)
+
 
     def help(self):
         '''
@@ -205,10 +213,11 @@ class Console:
         print("From the tweetsole console, enter any of the following commands: ")
         print("rt <tweet ID>  OR >> <tweet ID>       retweets a tweet")
         print("fav <tweet ID> OR <3 <tweet ID>       favorites a tweet")
+        print("reply <tweet ID>                      replies to a tweet")
         print("compose                               posts a new tweet")
         print("refresh                               loads 20 new tweets")
         print("help                                  show commands")
-
+        print("quit                                  exits the app")
     def print_tweets(self, tweets):
         '''
         Prints out tweets with username, text, and tweet information

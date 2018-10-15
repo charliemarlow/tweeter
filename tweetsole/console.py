@@ -217,7 +217,7 @@ class Console:
         print("compose                               posts a new tweet")
         print("refresh                               loads 20 new tweets")
         print("help                                  show commands")
-
+        print("exit                                  exits the app")
     def print_tweets(self, tweets):
         '''
         Prints out tweets with username, text, and tweet information

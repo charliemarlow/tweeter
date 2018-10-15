@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f8d66fa-0b4a-402f-9bce-b9e8dd939dd7" name="Default" comment="˚">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tweetsole.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tweetsole.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tweeter.authorizer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tweeter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tweetsole.authorizer.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tweetsole.authorizer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tweetsole.console.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tweetsole.console.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tweetsole.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tweetsole.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_authorizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tweetsole/console.py" beforeDir="false" afterPath="$PROJECT_DIR$/tweetsole/console.py" afterDir="false" />
-    </list>
+    <list default="true" id="7f8d66fa-0b4a-402f-9bce-b9e8dd939dd7" name="Default" comment="˚" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +12,7 @@
     <session id="-2059502333">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
